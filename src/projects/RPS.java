@@ -9,6 +9,7 @@ import java.util.Random;
 public class RPS {
 	Map<String, String> moves = new HashMap<>();
 	List<String> validMoves = new ArrayList<>(moves.keySet());
+	
 	public void play_game(String user_move) {
 		
 		moves.put("rock" , "🌑");
@@ -19,12 +20,20 @@ public class RPS {
 			System.out.println("Invalid move.");
 			return;
 		}
+		String aiMove = ai_move();
+		
 		
 	}
 	public String ai_move() {
 		Random random = new Random();
 		int rand_index = random.nextInt(3);
 		return validMoves.get(rand_index);
+	}
+	public void displayMoves(String user_move, String ai_move) {
+		System.out.println("----");
+		System.out.println("You " + moves.get(user_move));
+		System.out.println("You " + moves.get(ai_move));
+		System.out.println("----");
 	}
 
 	public static void main(String[] args) {
