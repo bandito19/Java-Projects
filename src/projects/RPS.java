@@ -8,20 +8,22 @@ import java.util.Random;
 
 public class RPS {
 	static Map<String, String> moves = new HashMap<>();
-	static List<String> validMoves = new ArrayList<>(moves.keySet());
+	static List<String> validMoves;
 	
 	public static void play_game(String user_move) {
 		
 		moves.put("rock" , "🌑");
 		moves.put("paper","📜");
 		moves.put("scissors", "✂");
+		validMoves = new ArrayList<>(moves.keySet());
 		
 		if (!validMoves.contains(user_move)) {
 			System.out.println("Invalid move.");
 			return;
 		}
 		String aiMove = ai_move();
-		
+		displayMoves(user_move, aiMove);
+		checkMoves(user_move, aiMove);
 		
 	}
 	public static String ai_move() {
@@ -29,23 +31,23 @@ public class RPS {
 		int rand_index = random.nextInt(3);
 		return validMoves.get(rand_index);
 	}
-	public void displayMoves(String user_move, String ai_move) {
+	public static void displayMoves(String user_move, String ai_move) {
 		System.out.println("----");
 		System.out.println("You " + moves.get(user_move));
 		System.out.println("You " + moves.get(ai_move));
 		System.out.println("----");
 	}
-	public void checkMoves(String user_move, String ai_move) {
-		if (user_move == ai_move) {
+	public static void checkMoves(String user_move, String ai_move) {
+		if (user_move.equals(ai_move)) {
 			System.out.println("It is a tie.");
 		}
-		else if (user_move == "rock" && ai_move == "scissors") {
+		else if (user_move.equals("rock") && ai_move.equals("scissors")) {
 			System.out.println("You win!");
 		}
-		else if (user_move == "scissors" && ai_move == "paper") {
+		else if (user_move.equals("scissors") && ai_move.equals("paper")) {
 			System.out.println("You win!");
 		}
-		else if (user_move == "paper" && ai_move == "rock") {
+		else if (user_move.equals("paper") && ai_move.equals("rock")) {
 			System.out.println("You win!");
 		}
 		else {
@@ -57,9 +59,10 @@ public class RPS {
 		// TODO Auto-generated method stub
 		System.out.println("Welcome to RPS!");
 		Scanner inp = new Scanner(System.in);
-		System.out.print("Rock, paper or scissors: ");
-		String user_move = inp.nextLine();
+		
 		while (true) {
+			System.out.print("Rock, paper or scissors: ");
+			String user_move = inp.nextLine();
 			play_game(user_move);
 		}
 	}
