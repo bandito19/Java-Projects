@@ -34,7 +34,7 @@ public class RPS {
 	public static void displayMoves(String user_move, String ai_move) {
 		System.out.println("----");
 		System.out.println("You " + moves.get(user_move));
-		System.out.println("You " + moves.get(ai_move));
+		System.out.println("Ai " + moves.get(ai_move));
 		System.out.println("----");
 	}
 	public static void checkMoves(String user_move, String ai_move) {
