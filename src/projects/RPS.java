@@ -62,7 +62,7 @@ public class RPS {
 		
 		while (true) {
 			System.out.print("Rock, paper or scissors: ");
-			String user_move = inp.nextLine();
+			String user_move = inp.nextLine().toLowerCase();
 			play_game(user_move);
 		}
 	}
