@@ -4,7 +4,7 @@ public class PasswordGenerator {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String password = generatePassword(10, true, true);
+		String password = generatePassword(20, true, true);
 		System.out.print("password: ");
 		System.out.println(password);
 	}
